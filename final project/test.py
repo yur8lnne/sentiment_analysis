@@ -186,7 +186,7 @@ df['kind']=df['kind'].map({'Positive':1, 'Neutral':2, 'Negative':0, 'Irrelevant'
 
 X = tfidf.fit_transform(df['twt']).toarray()
 y = df['kind'].values
-featureNames = tfidf.get_feature_names()
+featureNames = tfidf.get_feature_names_out()
 
 # Splitting the dataset into train and test
 from sklearn.model_selection import train_test_split
@@ -208,7 +208,7 @@ y = df["kind"].values
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
 from sklearn.ensemble import RandomForestClassifier
-rf_model = RandomForestClassifier(n_estimators=50, max_features="auto")
+rf_model = RandomForestClassifier(n_estimators=50, max_features='log2')
 rf_model.fit(X_train, y_train)
 
 predictions = rf_model.predict(X_test)
