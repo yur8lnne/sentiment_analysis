@@ -3,8 +3,8 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 import pickle
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
+#from tensorflow.keras.preprocessing.text import Tokenizer
+#from tensorflow.keras.preprocessing.sequence import pad_sequences
 # Input data files are available in the read-only "../input/" directory
 # For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
 
@@ -13,8 +13,6 @@ for dirname, _, filenames in os.walk('/kaggle/input'):
     for filename in filenames:
         print(os.path.join(dirname, filename))
 
-import pandas as pd
-import numpy as np
 
 train_data=pd.read_csv(r"C:\Users\조유라\Desktop\sentiment_analysis\final project\data set\twitter_training.csv",names=["id","company","kind","tweet"])
 train_data.head()
@@ -113,7 +111,7 @@ def below_threshold_len(max_len, nested_list):
 
 max_len = 75
 below_threshold_len(max_len, X_train)
-
+'''
 X_train = pad_sequences(X_train, maxlen=max_len)
 X_test = pad_sequences(X_test, maxlen=max_len)
 
@@ -144,3 +142,4 @@ with open('tokenizer.pickle', 'wb') as handle:
 
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
+'''
